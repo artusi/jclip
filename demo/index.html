@@ -1,0 +1,164 @@
+<html>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<head>
+		<title>JClip</title>
+		<style type="text/css">
+			#all{
+				width: 750px;
+				margin: 0 auto;
+				font-family: 'Passion+One', sans-serif;
+			}
+			.img-sprite{
+				 overflow: auto;
+				 width: 600px;
+			}
+		</style>
+
+		<link href='http://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+
+		<script type="text/javascript" src="assets/js/jclip.js"></script>
+		<script type="text/javascript" src="assets/js/swfobject.js"></script>
+
+		<!-- http://alexgorbatchev.com/SyntaxHighlighter/ -->
+		<script type="text/javascript" src="assets/lib/shl/scripts/XRegExp.js"></script>
+		<script type="text/javascript" src="assets/lib/shl/scripts/shCore.js"></script>
+		<script type="text/javascript" src="assets/lib/shl/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript">SyntaxHighlighter.all();</script>
+		<link type="text/css" rel="stylesheet" href="assets/lib/shl/styles/shCore.css"/>
+		<link type="text/css" rel="Stylesheet" href="assets/lib/shl/styles/shThemeDefault.css" />
+		<!--  -->
+
+		<script type="text/javascript">
+			swfobject.embedSWF("assets/swfs/sprite.swf", "sprite-swf", "200", "200", "10.1.0");
+		</script>
+
+	</head>
+	<body>
+		<div id="all">
+			<!-- WHAT -->
+			<h3>What is JClip?</h3>
+			<p>It is a simple javascript function to simulate a basic Flash MovieClip in Html.</p>
+
+			<!-- <p>É uma função em javascript que simula um MovieClip básico do Flash em Html.</p> -->
+
+
+			<!-- EXAMPLE -->
+			<h3>Example:</h3>
+				<ul>
+					<li>
+						<p><strong>1 step:</strong> Make your animation on flash;</p>
+						<div id="sprite-swf"></div>
+					</li>
+					<li>
+						<p>
+							<strong>2 step:</strong> Generate a SpriteSheet (i am using <a href="http://fermmm.wordpress.com/2011/02/04/swf-spritesheet-creator/">SpriteSheetCreator</a>);
+						</p>
+						<div class="img-sprite">
+							<img src="assets/imgs/sprite.png" width="5000" height="200">
+						</div>
+					</li>
+					<li>
+						<p><strong>3 step:</strong> Use Jclip to simulate;</p>
+						<script type="syntaxhighlighter" class="brush: js;">
+								var jclip = jClip("clipLoop", "assets/imgs/sprite.png", 200);
+								var onready = function(){
+									jclip.loop();
+								}
+
+								jclip.event("ready", onready);
+						</script>
+
+
+						<div id="clipLoop"></div>
+						<script type="text/javascript">
+								var jclip = jClip("clipLoop", "assets/imgs/sprite.png", 200);
+								var onready = function(){									
+									jclip.loop();
+								}
+
+								jclip.event("ready", onready);
+						</script>
+						
+					</li>
+				</ul>					
+
+			<!-- DOCUMENTATION -->
+			<h3>Documentation:</h3>
+
+				<h4>Property</h4>
+				<ul>
+					<li>
+						<p><strong>element</strong> : <span>String</span></p>
+						<p class="description">Div id</p>
+					</li>
+					<li>
+						<p><strong>url</strong> : <span>String</span></p>
+						<p class="description">Image url</p>
+					</li>
+					<li>
+						<p><strong>frameWidth</strong> : <span>Number</span></p>
+						<p class="description">Spritesheet frame width (swf width)</p>
+					</li>
+					<li>
+						<p><strong>options</strong> { frameRate: <span>Number</span> = 40 }</p>
+						<p class="description">Extra options, frameRate set jclip framerate</p>
+					</li>
+
+				</ul>
+
+				<h4>Public Methods </h4>
+				<ul>
+					<li>
+						play
+					</li>
+					<li>
+						gotoAndPlay
+					</li>
+					<li>
+						gotoAndStop
+					</li>
+					<li>
+						loop
+					</li>
+					<li>
+						reverse
+					</li>
+					<li>
+						clear
+					</li>
+				</ul>
+
+				<h4>Events</h4>
+				<ul>
+					<li>
+						ready
+					</li>
+					<li>
+						init
+					</li>
+					<li>
+						update
+					</li>
+					<li>
+						complete
+					</li>
+				</ul>
+
+			<!-- FAQ -->
+			<h3>F.A.Q</h3>
+			<ul>
+				<li>
+					Browser support
+				</li>
+				<li>
+					Events
+				</li>
+				<li>
+					How do i make a spriteSheet?
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
