@@ -1,5 +1,9 @@
 
 /*
+
+rafae artusi
+https://github.com/artusi/jclip
+
 EXAMPLE
 
 	var jclip = jClip("clipLoop", "imgs/bullet.png", 105);

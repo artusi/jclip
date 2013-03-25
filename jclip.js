@@ -1,7 +1,11 @@
 
 /*
-EXAMPLE
 
+rafae artusi
+https://github.com/artusi/jclip
+
+EXAMPLE
+	
 	var jclip = jClip("clipLoop", "imgs/bullet.png", 105);
 	var onready = function(){
 		jclip.event("start", function(){console.log("complete"); });
