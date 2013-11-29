@@ -21,15 +21,6 @@
 		<script type="text/javascript" src="assets/js/jclip.js"></script>
 		<script type="text/javascript" src="assets/js/swfobject.js"></script>
 
-		<!-- http://alexgorbatchev.com/SyntaxHighlighter/ -->
-		<script type="text/javascript" src="assets/lib/shl/scripts/XRegExp.js"></script>
-		<script type="text/javascript" src="assets/lib/shl/scripts/shCore.js"></script>
-		<script type="text/javascript" src="assets/lib/shl/scripts/shBrushJScript.js"></script>
-		<script type="text/javascript">SyntaxHighlighter.all();</script>
-		<link type="text/css" rel="stylesheet" href="assets/lib/shl/styles/shCore.css"/>
-		<link type="text/css" rel="Stylesheet" href="assets/lib/shl/styles/shThemeDefault.css" />
-		<!--  -->
-
 		<script type="text/javascript">
 			swfobject.embedSWF("assets/swfs/sprite.swf", "sprite-swf", "200", "200", "10.1.0");
 		</script>
@@ -61,26 +52,21 @@
 					</li>
 					<li>
 						<p><strong>3 step:</strong> Use Jclip to simulate;</p>
-						<script type="syntaxhighlighter" class="brush: js;">
-								var jclip = jClip("clipLoop", "assets/imgs/sprite.png", 200);
-								var onready = function(){
-									jclip.loop();
-								}
-
-								jclip.event("ready", onready);
-						</script>
-
-
 						<div id="clipLoop"></div>
-						<script type="text/javascript">
-								var jclip = jClip("clipLoop", "assets/imgs/sprite.png", 200);
-								var onready = function(){									
-									jclip.loop();
+
+						<script>
+								var jclip = jClip("clipLoop", "assets/imgs/hot_dog.png", 350, 694, {reverse:true});
+								
+								var onready = function(){
+
+									// jclip.gotoAndStop(7);
+									jclip.play();
 								}
 
 								jclip.event("ready", onready);
+								jclip.start();
 						</script>
-						
+
 					</li>
 				</ul>					
 
