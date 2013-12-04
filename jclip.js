@@ -1,4 +1,3 @@
-
 /*
 
 rafae artusi
@@ -20,6 +19,8 @@ EXAMPLE
 	}
 
 	jclip.event("ready", onready);
+	
+	----
 
 */
 var jClip = function(element, url, frameWidth, options){
