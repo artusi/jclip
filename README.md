@@ -1,6 +1,19 @@
-# jclip
+# jclip [![build status][travis_build_status_image]][travis_build_status_url] [![dependencies status][david_dependencies_status_image]][david_dependencies_status_url] [![devDependency status][david_devdependencies_status_image]][david_devdependencies_status_url]
 
 _jClip_ is a new way to make animations and control jpegs, you can use as a "gif" file or control like a _Flash Movieclip_.
+
+<!-- travis -->
+[travis_build_status_image]: https://travis-ci.org/adriancmiranda/jclip.png?branch=master
+[travis_build_status_url]: https://travis-ci.org/adriancmiranda/jclip "build status"
+
+<!-- david dependencies -->
+[david_dependencies_status_image]: https://david-dm.org/adriancmiranda/jclip.png?theme=shields.io
+[david_dependencies_status_url]: https://david-dm.org/adriancmiranda/jclip "dependencies status"
+
+<!-- david devDependencies -->
+[david_devdependencies_status_image]: https://david-dm.org/adriancmiranda/jclip/dev-status.png?theme=shields.io
+[david_devdependencies_status_url]: https://david-dm.org/adriancmiranda/jclip#info=devDependencies "devDependencies status"
+
 
 ### Usage
 ```javascript

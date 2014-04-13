@@ -66,10 +66,20 @@
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		// Private variables
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		$private.source = null; // spritesheet
+		$private.sx = null; // source x
+		$private.sy = null; // source y
+		$private.sw = null; // source width
+		$private.sh = null; // source height
+		$private.dx = null; // destination x
+		$private.dy = null; // destination y
+		$private.dw = null; // destination width
+		$private.dh = null; // destination height
+
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		// Private functions
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		$private.gotoFrame = function(frame) {
+		$private.drawImage = function(frame) {
 		};
 		$private.update = function() {
 		};
