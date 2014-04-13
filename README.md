@@ -33,7 +33,11 @@ jclip.event('ready', function () {
     jclip.event('complete', function() {
         console.log('complete');
     });
-    jclip.loop();
+    // jclip.loop();
+    // jclip.reverse(true);
+	// jclip.gotoAndPlay(6);
+	// jclip.gotoAndStop(5);
+	// jclip.play();
 });
 ```
 
