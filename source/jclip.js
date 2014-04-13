@@ -26,4 +26,57 @@
 //'*/
 (function (window, document, undefined) {
 	'use strict';
+	function jClip(source, options) {
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// Namespaces
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		var $private = {};
+		var $protected = this;
+		var $constructor = $protected.constructor;
+		var $public = $constructor.prototype;
+		var $super = null;
+
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// Public variables
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// Public functions
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		$public.play = function() {
+		};
+		$public.pause = function() {
+		};
+		$public.stop = function() {
+		};
+		$public.gotoRandomFrame = function() {
+		};
+		$public.gotoAndPlay = function(frame) {
+		};
+		$public.gotoAndStop = function(frame) {
+		};
+		$public.nextFrame = function() {
+		};
+		$public.prevFrame = function() {
+		};
+		$public.jumpFrames = function(amount) {
+		};
+		$public.toString = function() {
+		};
+
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// Private variables
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// Private functions
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		$private.gotoFrame = function(frame) {
+		};
+		$private.update = function() {
+		};
+		$private.render = function() {
+		};
+
+		// Makes it possible to access without the keyword "new"
+		return $protected;
+	};
 }(this, this.document));
