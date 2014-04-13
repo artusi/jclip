@@ -26,83 +26,155 @@
 	//| @see http://code.google.com/p/jsdoc-toolkit/wiki/TagReference
 	//|
 	//'*/
-	function jClip(source, options) {
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		// Namespaces
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		var $super = this,
-		$static = $super,
-		$constructor = $static.constructor,
-		$public = $constructor.prototype,
-		$private = {};
+	var jClip = function (element, url, frameWidth, options) {
+		// Props
+		var img, renderInterval, totalFrames, onUpdateEvent,
+		onReadyEvent, onInitEvent, onCompleteEvent, rate,
+		el = document.getElementById(element),
+		fWidth = frameWidth,
+		reverse = false,
+		loop = false,
+		frameOn = 0,
+		w = 0,
+		h = 0;
 
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		// Public variables
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		$public.totalFrames = 0; // Number of frames in sprite
-		$public.fps = 18; // Frames per second
-		$public.width = 0; // (optional) Set the frame width manually
-		$public.height = 0; // (optional) Set the frame height manually
+		// Get element
+		if (!el) {
+			return { error: 'element not found' };
+		}
+		if (!options) {
+			options = {};
+		}
+		if (options.frameRate) {
+			options.frameRate = Math.ceil(1000 / options.frameRate);
+		}
+		// event.customData = getYourCustomData();
 
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		// Public methods
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		$public.play = function() {
-		};
-		$public.pause = function() {
-		};
-		$public.stop = function() {
-			$private.drawImage(0);
-			$public.pause();
-		};
-		$public.togglePause = function() {
-		};
-		$public.gotoRandomFrame = function() {
-		};
-		$public.gotoAndPlay = function(frame) {
-			$private.drawImage(frame);
-			$public.play();
-		};
-		$public.gotoAndStop = function(frame) {
-			$private.drawImage(frame);
-			$public.pause();
-		};
-		$public.nextFrame = function() {
-			$public.jumpFrames(0 + 1);
-		};
-		$public.prevFrame = function() {
-			$public.jumpFrames(0 - 1);
-		};
-		$public.jumpFrames = function(amount) {
-		};
-		$public.toString = function() {
+		// IMG
+		rate = (options.frameRate || 40);
+		img = new Image();
+		img.src = url;
+		img.onload = function() {
+			w = img.width;
+			h = img.height;
+			props();
+			if (onReadyEvent) {
+				onReadyEvent();
+			}
 		};
 
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		// Private variables
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		$private.source = null; // spritesheet
-		$private.sx = null; // source x
-		$private.sy = null; // source y
-		$private.sw = null; // source width
-		$private.sh = null; // source height
-		$private.dx = null; // destination x
-		$private.dy = null; // destination y
-		$private.dw = null; // destination width
-		$private.dh = null; // destination height
+		// Add Background
+		function props() {
+			totalFrames = w / fWidth;
+			//build clip
+			el.style.background = 'url("' + url + '") no-repeat scroll top left';
+			el.style.display = 'block';
+			el.style.width = fWidth + 'px';
+			el.style.height = h + 'px';
+		}
 
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		// Private methods
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		$private.drawImage = function(frame) {
-		};
-		$private.update = function() {
-		};
-		$private.render = function() {
-		};
+		//
+		function start(options) {
+			if (!options) {
+				options = {};
+			}
+			if (onInitEvent) {
+				onInitEvent();
+			}
+			if (options.startFrame) {
+				frameOn = options.startFrame;
+				el.style.backgroundPosition = (0 - (frameOn * fWidth)) + 'px';
+			}
+			if (options.loop) {
+				loop = options.loop;
+			}
+			// console.log('LOOP', loop, options.loop);
+			// return;
+			window.clearInterval(renderInterval);
+			renderInterval = window.setInterval(render, rate);
+		}
 
-		// Makes it possible to access without the keyword "new" too
-		return $static;
+		function render() {
+			el.style.backgroundPosition = (0 - (frameOn * fWidth)) + 'px';
+			var dir = (!reverse) ? 1 : -1;
+			frameOn += dir;
+			if (onUpdateEvent) {
+				onUpdateEvent({currentFrame: frameOn, totalFrames: totalFrames});
+			}
+			if (frameOn > totalFrames - 1 || frameOn < 0) {
+				stop();
+				return;
+			}
+			// console.log('el.style.backgroundPosition', el.style.backgroundPosition);
+		}
+
+		function stop(options) {
+			if (!options) {
+				options = {};
+			}
+			if (loop) {
+				frameOn = (!reverse) ? 0 : totalFrames;
+				return;
+			} else {
+				clearInterval(renderInterval);
+			}
+			if (!options.clear && onCompleteEvent) {
+				onCompleteEvent();
+			}
+		}
+
+		var clip = {
+			play: function() {
+				start();
+			},
+			gotoAndPlay: function(goFrame) {
+				frameOn = goFrame;
+				start();
+			},
+			gotoAndStop: function(goFrame) {
+				start({ startFrame: goFrame });
+				stop({ clear: true});
+			},
+			loop: function() {
+				// console.log('loop', render);
+				start({ loop: true });
+			},
+			clear: function() {
+				// console.log('loop', render);
+				loop = false;
+				stop({ clear: true });
+			},
+			reverse: function(type) {
+				// console.log('loop', render);
+				if (type && !frameOn) {
+					frameOn = totalFrames - 1;
+				}
+				reverse = type;
+				// stop({ clear: true });
+			},
+			event: function(type, callback) {
+				switch (type) {
+					case 'init': {
+						onInitEvent = callback;
+						break;
+					}
+					case 'update': {
+						onUpdateEvent = callback;
+						break;
+					}
+					case 'ready': {
+						onReadyEvent = callback;
+						break;
+					}
+					case 'complete': {
+						onCompleteEvent = callback;
+						break;
+					}
+				}
+			},
+			error: ''
+		};
+		return clip;
 	};
 
 	// Expose `jClip` globally
