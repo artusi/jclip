@@ -1,0 +1,58 @@
+{
+  "name": "jclip",
+  "title": "jClip",
+  "description": "jClip is a new way to make animations and control jpegs, you can use as a \"gif\" file or control like a Flash Movieclip",
+  "version": "0.0.0",
+  "main": "dist/jclip.js",
+  "license": "MIT",
+  "homepage": "https://github.com/artusi/jclip",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.6.0",
+    "gulp-load-plugins": "~0.3.0",
+    "gulp-bump": "~0.1.7",
+    "gulp-clean": "~0.2.4",
+    "gulp-git": "~0.3.6",
+    "gulp-header": "~1.0.2",
+    "gulp-jshint": "~1.5.3",
+    "gulp-mocha": "~0.4.1",
+    "gulp-size": "~0.3.0",
+    "gulp-uglify": "~0.2.1",
+    "gulp-plumber": "~0.6.1",
+    "gulp-jscs": "~0.4.1",
+    "gulp-rename": "~1.2.0"
+  },
+  "author": [
+    {
+      "name": "Rafael Artusi",
+      "email": "rafael.artusi@gmail.com",
+      "url": "https://github.com/artusi"
+    },
+    {
+      "name": "Adrian C. Miranda",
+      "email": "adriancmiranda@gmail.com",
+      "url": "https://github.com/adriancmiranda"
+    }
+  ],
+  "keywords": [
+    "jclip",
+    "javascript",
+    "animation",
+    "library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artusi/jclip.git"
+  },
+  "bugs": {
+    "url": "https://github.com/artusi/jclip/issues"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "npm install && gulp",
+    "start": "gulp watch",
+    "test": "gulp"
+  }
+}

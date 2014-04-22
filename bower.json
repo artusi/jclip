@@ -1,0 +1,15 @@
+{
+  "name": "jClip",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {},
+  "ignore": [
+    "app/scripts/vendor",
+    "node_modules",
+    "tests",
+    "test",
+    "**/.*"
+  ]
+}
