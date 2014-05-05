@@ -44,6 +44,9 @@ jclip.event('ready', function () {
 ### Examples
 * [See Demo page][demo_page]
 
+### Helpfull
+* [SwfSpriteSheet – Sprite sheets from Flash][spritesheet_creator]
+
 ### Support
 Bugs and issues should be reported via the [issue tracker][issue_tracker].
 
@@ -56,3 +59,4 @@ Bugs and issues should be reported via the [issue tracker][issue_tracker].
 [issue_tracker]: http://github.com/artusi/jclip/issues "Issue tracker"
 
 [demo_page]: https://github.com/artusi/jclip/examples "Demo page"
+[spritesheet_creator]: http://fermmm.wordpress.com/2011/02/04/swf-spritesheet-creator/ "SwfSpriteSheet – Sprite sheets from Flash"
